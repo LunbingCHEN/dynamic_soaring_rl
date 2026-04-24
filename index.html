@@ -274,8 +274,8 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
     .video-card {
@@ -296,6 +296,11 @@
     .video-body {
       padding: 16px 18px 18px;
     }
+
+    .video-group-title {
+      font-weight: 700;  /* 或 bold */
+    }
+
 
     .video-title {
       margin: 0 0 6px;
@@ -400,13 +405,10 @@
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand">Dynamic Soaring Project Page</div>
+      <div class="brand">Step-Level Dynamic Soaring Project Page</div>
       <nav class="nav">
-        <a href="#overview">Overview</a>
         <a href="#question">Core Question</a>
         <a href="#videos">Videos</a>
-        <a href="#findings">Findings</a>
-        <a href="#paper">Paper</a>
         <a href="#citation">Citation</a>
       </nav>
     </div>
@@ -421,8 +423,7 @@
           <p class="subtitle">
             Dynamic soaring is commonly described at the level of complete cycles. Here, we show that
             efficient long-range navigation in shear flow can instead emerge from <strong>step-level,
-            state-feedback control</strong> using only <strong>local sensing</strong>, without explicit
-            cycle-level planning.
+            state-feedback control</strong> using only <strong>local sensing</strong>, without explicit cycle-level planning.
           </p>
 
           <div class="authors">
@@ -442,62 +443,8 @@
           </div>
 
           <div class="link-row">
-            <a class="button primary" href="paper.pdf" target="_blank" rel="noopener">Paper PDF</a>
-            <a class="button" href="#videos">Representative Videos</a>
-            <a class="button" href="https://github.com/your-repo-here" target="_blank" rel="noopener">Code</a>
-            <a class="button" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="overview">
-      <div class="container">
-        <div class="section-header">
-          <h2>Overview</h2>
-          <p class="section-desc">
-            Dynamic soaring enables sustained flight by harvesting energy from wind shear. In traditional
-            descriptions, this behavior is interpreted through complete soaring cycles. In realistic
-            environments, however, wind fields are variable and locally changing, making it unclear
-            whether successful navigation truly requires explicit cycle-level planning.
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card abstract-box">
-            <strong>Abstract</strong>
-            <p>
-              Dynamic soaring enables sustained flight by extracting energy from wind shear, yet it is
-              commonly understood as a cycle-level maneuver that assumes stable flow conditions. In
-              realistic unsteady environments, however, such assumptions are often violated, raising the
-              question of whether explicit cycle-level planning is necessary. Here, we show that dynamic
-              soaring can emerge from step-level, state-feedback control using only local sensing, without
-              explicit trajectory planning. Using deep reinforcement learning as a tool, we obtain policies
-              that achieve robust omnidirectional navigation across diverse shear-flow conditions. The
-              learned behavior organizes into a structured control law that coordinates turning and vertical
-              motion, giving rise to a two-phase strategy governed by a trade-off between energy extraction
-              and directional progress. The resulting policy generalizes across varying conditions and
-              reproduces key features observed in biological flight and optimal-control solutions. These
-              findings identify a feedback-based control structure underlying dynamic soaring, demonstrating
-              that efficient energy-harvesting flight can emerge from local interactions with the flow
-              without explicit planning, and providing insights for biological flight and autonomous systems
-              in complex, flow-coupled environments.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Main claim</h3>
-            <p>
-              Dynamic soaring <strong>does not require explicit cycle-level planning</strong>. Instead,
-              robust long-range navigation can emerge from <strong>step-level feedback</strong> based only
-              on local observations of the current flight state and local wind condition.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Step-level feedback</span>
-              <span class="tag">Local sensing</span>
-              <span class="tag">No explicit planning</span>
-              <span class="tag">Omnidirectional navigation</span>
-            </div>
+            <a class="button" href="https://www.youtube.com/watch?v=1WU8Nm8YxwY&list=PL3AQK4aQjaSjdAdN0vzPkrVSJfppzQw2j&index=6" target="_blank" rel="noopener">Youtube</a>
+            <a class="button" href="https://arxiv.org/abs/2604.12413" target="_blank" rel="noopener">arXiv</a>
           </div>
         </div>
       </div>
@@ -507,15 +454,11 @@
       <div class="container">
         <div class="section-header">
           <h2>Core question</h2>
-          <p class="section-desc">
-            The paper is organized around a control question rather than a trajectory-generation question.
-          </p>
         </div>
 
         <div class="card callout">
           <p class="question">
-            <strong>Is explicit cycle-level global planning necessary for dynamic soaring, or can sustained
-            energy extraction and navigation emerge from step-level feedback based solely on local sensing?</strong>
+            <strong>Is explicit cycle-level global planning necessary for dynamic soaring, or can sustained energy extraction and navigation emerge from step-level feedback based solely on local sensing?</strong>
           </p>
         </div>
 
@@ -523,23 +466,19 @@
           <div class="card">
             <h3>Why this question matters</h3>
             <p>
-              Existing descriptions of dynamic soaring are often built around complete maneuvers between
-              wind layers. Such formulations implicitly assume that the flow remains stable over the
-              duration of each maneuver. In realistic near-surface environments, however, wind conditions
-              can vary on spatial and temporal scales comparable to a single maneuver, making future flow
-              conditions difficult to predict over extended horizons.
+              Existing descriptions of dynamic soaring are often built around complete maneuvers between wind layers. 
+              Such formulations implicitly assume that the flow remains stable over the duration of each maneuver. 
+              In realistic near-surface environments, however, wind conditions can vary on spatial and temporal scales comparable to a single maneuver, making future flow conditions difficult to predict over extended horizons.
             </p>
           </div>
 
           <div class="card analogy-box">
             <h3>Intuition: planning versus feedback</h3>
             <p>
-              A useful analogy is driving in a changing traffic environment. Although a route can be planned
-              in advance, real-world driving rarely follows a fixed trajectory: traffic flow, obstacles, or
-              road closures require continuous adjustment of control actions based on local information.
-              Dynamic soaring operates under a similar principle. When local flow conditions vary, effective
-              behavior must adapt at the level of instantaneous decisions rather than simply executing a
-              precomputed cycle.
+              A useful analogy is driving in a changing traffic environment. 
+              Although a route can be planned in advance, real-world driving rarely follows a fixed trajectory: traffic flow, obstacles, or road closures require continuous adjustment of control actions based on local information.
+              Dynamic soaring operates under a similar principle. 
+              When local flow conditions vary, effective behavior must adapt at the level of instantaneous decisions rather than simply executing a precomputed cycle.
             </p>
           </div>
         </div>
@@ -550,20 +489,23 @@
       <div class="container">
         <div class="section-header">
           <h2>Representative videos</h2>
-          <p class="section-desc">
-            The videos below show both the baseline navigation behavior and several out-of-distribution
-            generalization tests. Replace the paths with your final video files before deployment.
-          </p>
         </div>
 
         <div class="video-group">
-          <div class="video-group-title">A. Baseline navigation across wind-relative directions</div>
+
+          <!-- <div class="video-group-title">A. Baseline navigation across wind-relative directions</div>
           <div class="video-grid">
+
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_1_1.jpg">
-                <source src="videos/video_1_1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="100%"
+                height="520"
+                src="https://www.youtube.com/embed/12oQ_2YlxIU"
+                title="Crosswind dynamic soaring"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
                 <h3 class="video-title">Video 1. Crosswind navigation</h3>
                 <p class="video-meta">
@@ -581,10 +523,14 @@
             </article>
 
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_1_2.jpg">
-                <source src="videos/video_1_2.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="100%"
+                height="520"
+                src="https://www.youtube.com/embed/OybFjSRShSE"
+                title="Tailwind dynamic soaring"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
                 <h3 class="video-title">Video 2. Tailwind navigation</h3>
                 <p class="video-meta">
@@ -601,10 +547,14 @@
             </article>
 
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_1_3.jpg">
-                <source src="videos/video_1_3.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="100%"
+                height="520"
+                src="https://www.youtube.com/embed/69Mte6Bjrts"
+                title="Headwind dynamic soaring"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
                 <h3 class="video-title">Video 3. Headwind navigation</h3>
                 <p class="video-meta">
@@ -620,25 +570,29 @@
               </div>
             </article>
           </div>
-        </div>
+        </div> -->
 
         <div class="video-group">
-          <div class="video-group-title">B. Generalization to varying environments</div>
+          <div class="video-group-title">Dynamic Soaring in Varying Winds</div>
           <div class="video-grid">
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_2_1.jpg">
-                <source src="videos/video_2_1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="70%"
+                height="520"
+                style="display: block; margin: 0 auto;"
+                src="https://www.youtube.com/embed/ZcfWjcjgyAE"
+                title="Varying wind direction"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
-                <h3 class="video-title">Video 4. Generalization to varying wind direction</h3>
+                <!-- <h3 class="video-title">Video 4. Generalization to varying wind direction</h3> -->
                 <p class="video-meta">
                   Corresponds to Figure 4A &nbsp;|&nbsp; Generalization test: spatially varying wind field
                 </p>
                 <p class="video-desc">
-                  Although the policy is trained in uniform wind fields, it adapts successfully to spatially
-                  varying wind direction. This supports the interpretation that the controller exploits local
-                  flow information rather than memorizing a fixed trajectory.
+                  Although the policy is trained in uniform shear wind fields, it adapts successfully to spatially varying wind direction. <br>
+                  This supports the interpretation that the controller exploits local flow information rather than memorizing a fixed trajectory.
                 </p>
               </div>
             </article>
@@ -646,141 +600,54 @@
         </div>
 
         <div class="video-group">
-          <div class="video-group-title">C. Generalization to moving targets</div>
+          <div class="video-group-title">Track Moving Targets by Dynamic Soaring</div>
           <div class="video-grid">
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_3_1.jpg">
-                <source src="videos/video_3_1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="70%"
+                height="520"
+                style="display: block; margin: 0 auto;"
+                src="https://www.youtube.com/embed/RqCTCWHXD84"
+                title="Moving target success"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
-                <h3 class="video-title">Video 5. Moving target capture (success)</h3>
+                <!-- <h3 class="video-title">Video 5. Moving target capture (success)</h3> -->
                 <p class="video-meta">
-                  Corresponds to Supplementary Figure S4 (E–H) &nbsp;|&nbsp; Generalization test
+                  Corresponds to Figure 4E &nbsp;|&nbsp; Generalization test: moving target
                 </p>
                 <p class="video-desc">
-                  Successful interception of a moving target. The controller adapts online to the changing
-                  navigation objective while maintaining energy-harvesting flight.
+                  Successful interception of a moving target. <br>
+                  The controller adapts online to the changing navigation objective while maintaining energy-harvesting flight.
                 </p>
               </div>
             </article>
 
             <article class="video-card">
-              <video controls preload="metadata" poster="assets/posters/video_3_2.jpg">
-                <source src="videos/video_3_2.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                width="70%"
+                height="520"
+                style="display: block; margin: 0 auto;"
+                src="https://www.youtube.com/embed/1WU8Nm8YxwY"
+                title="Moving target timeout"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
               <div class="video-body">
-                <h3 class="video-title">Video 6. Moving target capture (timeout)</h3>
+                <!-- <h3 class="video-title">Video 6. Moving target capture (timeout)</h3> -->
                 <p class="video-meta">
-                  Corresponds to Supplementary Figure S4 (I–L) &nbsp;|&nbsp; Generalization test
+                  Corresponds to Figure 4E &nbsp;|&nbsp; Generalization test: moving target
                 </p>
                 <p class="video-desc">
-                  A challenging moving-target case leading to timeout rather than crash. This example is
-                  useful because it shows the boundary of performance and illustrates how failure can arise
-                  from task difficulty while the underlying energy-harvesting behavior remains intact.
+                  <p class="video-desc">
+                    A challenging moving-target case in which the agent continues tracking until timeout. <br>
+                    The trajectory shows that the policy preserves energy-harvesting behavior and can switch back from the target-gliding phase to the dynamic-soaring phase when additional energy is required.
+                  </p>
                 </p>
               </div>
             </article>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="findings">
-      <div class="container">
-        <div class="section-header">
-          <h2>Key findings</h2>
-          <p class="section-desc">
-            The learned policy is not simply a successful controller. It reveals an interpretable feedback
-            structure underlying dynamic soaring.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <h3>1. Dynamic soaring emerges without explicit planning</h3>
-            <p>
-              The learned policy demonstrates that sustained energy extraction and long-range navigation
-              can emerge from step-level, state-feedback control using only local sensing, rather than
-              from explicit cycle-level planning.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>2. Behavior organizes into a two-phase strategy</h3>
-            <p>
-              At the behavioral level, trajectories organize into a dynamic soaring phase followed by a
-              target-directed gliding phase, governed by a trade-off between energy extraction and
-              directional progress.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>3. Control organizes into a structured law</h3>
-            <p>
-              At the control level, coordinated modulation of bank angle and lift coefficient governs
-              horizontal turning and vertical motion, revealing a structured feedback law grounded in the
-              local wind-relative state.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-2" style="margin-top: 18px;">
-          <div class="card">
-            <h3>Wind-relative sensing is sufficient</h3>
-            <p>
-              Observation ablations show that a compact wind-relative representation is sufficient for
-              robust control, while geocentric or less structured sensory representations degrade learning
-              and transfer.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Generalization supports a feedback interpretation</h3>
-            <p>
-              The policy generalizes to spatially varying winds, moving targets, and noisy observations,
-              suggesting that the learned behavior reflects a reusable feedback strategy rather than a
-              condition-specific trajectory.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="paper">
-      <div class="container">
-        <div class="section-header">
-          <h2>Paper assets</h2>
-          <p class="section-desc">
-            Add your final figures and links here. The image filenames below are placeholders and can be
-            replaced with your exported PNG or JPEG figures.
-          </p>
-        </div>
-
-        <div class="figure-grid">
-          <div class="card figure-card">
-            <img src="assets/figures/fig1_overview.png" alt="Overview figure of the dynamic soaring problem formulation and RL framework" />
-            <div class="figure-caption">
-              <strong>Figure 1.</strong> Problem formulation and deep reinforcement learning framework for
-              autonomous dynamic soaring. This figure introduces the task, the glider model, the wind
-              profile, and the success-rate maps across target directions and wind conditions.
-            </div>
-          </div>
-
-          <div class="card figure-card">
-            <img src="assets/figures/fig4_generalization.png" alt="Generalization figure under varying wind fields and navigation conditions" />
-            <div class="figure-caption">
-              <strong>Figure 4.</strong> Robustness and generalization under out-of-distribution conditions,
-              including spatially varying winds, altered navigation tasks, and observation noise.
-            </div>
-          </div>
-        </div>
-
-        <div class="link-row" style="margin-top: 18px;">
-          <a class="button primary" href="paper.pdf" target="_blank" rel="noopener">Download Paper</a>
-          <a class="button" href="supplementary.pdf" target="_blank" rel="noopener">Supplementary PDF</a>
-          <a class="button" href="https://github.com/your-repo-here" target="_blank" rel="noopener">Source Code</a>
         </div>
       </div>
     </section>
@@ -789,29 +656,33 @@
       <div class="container">
         <div class="section-header">
           <h2>Citation</h2>
-          <p class="section-desc">
-            Update the venue, DOI, and URLs once the manuscript status is finalized.
-          </p>
         </div>
 
-        <pre class="bibtex">@article{chen2026steplevelds,
-  title   = {Learning step-level dynamic soaring in shear flow},
-  author  = {Chen, Lunbing and Lu, Jixin and Yin, Yufei and Huang, Jinpeng and Xiang, Yang and Liu, Hong},
-  journal = {arXiv preprint arXiv:XXXX.XXXXX},
-  year    = {2026}
-}</pre>
+        <pre class="bibtex">@article{chen2026learning,
+          title={Learning step-level dynamic soaring in shear flow},
+          author={Chen, Lunbing and Lu, Jixin and Yin, Yufei and Huang, Jinpeng and Xiang, Yang and Liu, Hong},
+          journal={arXiv preprint arXiv:2604.12413},
+          year={2026}
+        }
+        </pre>
+
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      This page presents the central question, representative behaviors, and main findings of
-      <em>Learning step-level dynamic soaring in shear flow</em>. For questions, please contact
-      <a href="mailto:xiangyang@sjtu.edu.cn">xiangyang@sjtu.edu.cn</a>
+      This page presents the central question and representative behaviors of
+      <em>Learning step-level dynamic soaring in shear flow</em>. <br>
+      Preprint available at 
+      <a href="https://arxiv.org/abs/2604.12413" target="_blank">
+        arXiv:2604.12413
+      </a>. <br>
+      For questions, please contact
+      <a href="mailto:xiangyang@sjtu.edu.cn">xiangyang@sjtu.edu.cn</a> (Lead Contact),
+      <a href="mailto:hongliu@sjtu.edu.cn">hongliu@sjtu.edu.cn</a>,
       or
-      <a href="mailto:hongliu@sjtu.edu.cn">hongliu@sjtu.edu.cn</a>.
+      <a href="mailto:caesar01@sjtu.edu.cn">caesar01@sjtu.edu.cn</a>.
     </div>
   </footer>
 </body>
-</html>
