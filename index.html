@@ -210,7 +210,7 @@
       <p class="kicker">Dynamic soaring · Reinforcement learning · Fixed-wing flight</p>
       <h1>Learning step-level dynamic soaring in shear flow</h1>
       <p class="lead">
-        A state-feedback approach that enables a fixed-wing vehicle to harvest wind-gradient energy and navigate using local observations, without prescribing or planning a complete soaring cycle.
+        Dynamic soaring enables seabirds to travel thousands of kilometers by continuously extracting energy from atmospheric wind shear. This project asks whether the same energy-harvesting flight can emerge from step-level state feedback based only on local sensing, without explicit trajectory planning.
       </p>
       <p class="authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</p>
       <p class="status">Manuscript under external review at <em>Nature Communications</em>.</p>
@@ -228,19 +228,19 @@
         <div class="two-column">
           <div class="summary">
             <p>
-              Conventional descriptions of dynamic soaring are organized around complete periodic maneuvers. Near the surface, however, the environmental flow can change over the duration of a cycle, making long-horizon prediction and cycle-level planning unreliable.
+              Existing theoretical and computational studies predominantly describe dynamic soaring at the level of complete cycles, implicitly assuming that the flow remains stable over each maneuver. In realistic near-surface environments, wind fields vary on spatial and temporal scales comparable to a single maneuver, so predefined cyclic strategies may become suboptimal or dynamically infeasible.
             </p>
             <p class="research-question">
-              Is explicit cycle-level planning necessary, or can sustained energy extraction and target-directed flight emerge from local, step-level feedback?
+              Is explicit cycle-level global planning necessary, or can sustained energy extraction and navigation emerge from step-level feedback based solely on local sensing?
             </p>
             <p>
-              We formulate dynamic soaring as a continuous feedback-navigation problem and use reinforcement learning to identify an effective state-feedback strategy.
+              A step-level description therefore requires instantaneous local decisions to achieve the global objectives of energy extraction and long-range navigation in a three-dimensional, spatially varying flow field.
             </p>
           </div>
           <ol class="contribution-list">
-            <li><strong>Feedback formulation.</strong> Atmospheric-energy harvesting, kinetic-energy management, and target-directed navigation are combined in a step-level continuous-control problem.</li>
-            <li><strong>Learning from local information.</strong> The policy learns sustained, omnidirectional soaring without an externally imposed phase schedule or a prescribed full cycle.</li>
-            <li><strong>Physical interpretation.</strong> Ablation studies reveal how the learned feedback coordinates horizontal redirection and vertical energy management.</li>
+            <li><strong>Step-level feedback.</strong> Dynamic soaring emerges from state-feedback control using only local sensing, without prescribing a full soaring cycle.</li>
+            <li><strong>Robust navigation.</strong> The learned policies support omnidirectional navigation across diverse shear-flow conditions, including spatially varying winds.</li>
+            <li><strong>Structured control law.</strong> Local sensing and feedback organize into an interpretable strategy that produces global, long-distance navigation.</li>
           </ol>
         </div>
       </div>
@@ -252,7 +252,10 @@
         <div class="method-layout">
           <div class="method-copy">
             <p>
-              A Soft Actor-Critic policy is trained with curriculum learning across wind conditions and target directions. Observation and reward ablations are used to connect the learned decisions to flight dynamics and energy management.
+              We formulate dynamic soaring as a continuous feedback-navigation problem with coupled objectives of atmospheric-energy extraction and directional progress. Deep reinforcement learning is used as a tool to identify a step-level control policy from instantaneous aircraft and flow states.
+            </p>
+            <p>
+              A Soft Actor-Critic policy is trained through curriculum learning across wind conditions and target directions. Observation and reward ablations then connect the learned decisions to flight dynamics, sensing requirements, and energy management.
             </p>
             <ul class="result-list">
               <li>Sustained energy-harvesting flight across wind-relative target directions.</li>
